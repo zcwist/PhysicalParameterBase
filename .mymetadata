@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PhysicalParameterBase"
+  id="myeclipse.1418714371064"
+  context-root="/PhysicalParameterBase"
+  j2ee-spec="5.0"
+  archive="PhysicalParameterBase.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 存储所有可能用到的属性 -->
+<AttributeType>
+	<at>
+		<name>杨氏模量</name>
+		<type>float</type>
+		<unit>GPa</unit>
+	</at>
+	<at>
+		<name>环压强度</name>
+		<type>float</type>
+		<unit>N</unit>
+	</at>
+	<at>
+		<name>介质类型</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>贯字号</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>测试条件描述</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>测试样本图片</name>
+		<type>Picture</type>
+		<!-- when the attribute is a picture, the value will be the URL of the picture -->
+	</at>
+	
+</AttributeType>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 记录类形，是对RecordSampleType的概括，相当于一个View -->
+<RecordType>
+	<public>
+		<key>rid</key>
+		<fkey>pid</fkey>
+		<fkey>oid</fkey>
+	</public>
+	<!-- configurable -->
+	<rt>
+		<!-- 统计规则 -->
+		<rule>Average</rule>
+	
+	</rt>
+	<!-- configurable end -->
+</RecordType>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 所有物理对象，是对样本的抽象，也是样本的一种分类方式。对于数据库Collection:ObejctType-->
+<ObjectType>
+	<public>
+		<key>oid</key>
+		<name>ObjectName</name>
+	</public>
+	<!-- configurable -->
+	<ot>
+		<alias>什么介质？多新？</alias>
+		<at>介质类型</at>
+		<at>新旧程度</at>
+	</ot>
+	<ot>
+		<alias>什么介质？多大面额？</alias>
+		<at>介质类型</at>
+		<at>面额</at>
+	</ot>
+	<!-- configurable end -->
+</ObjectType>

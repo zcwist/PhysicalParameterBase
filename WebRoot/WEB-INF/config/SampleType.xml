@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--样本对象，是具体的实验对象。对于数据库Collection:SampleType-->
+<SampleType>
+	<public>
+		<key>sid</key>
+		<fkey>oid</fkey>
+	</public>
+	<!-- configurable -->
+	<st>
+		<at>贯字号</at>
+	</st>
+	<!-- configurable end -->
+</SampleType>
