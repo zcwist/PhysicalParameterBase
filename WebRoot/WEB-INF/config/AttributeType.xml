@@ -16,6 +16,10 @@
 		<type>String</type>
 	</at>
 	<at>
+		<name>介质类型</name>
+		<type>String</type>
+	</at>
+	<at>
 		<name>贯字号</name>
 		<type>String</type>
 	</at>

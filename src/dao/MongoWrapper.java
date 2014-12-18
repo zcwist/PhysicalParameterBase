@@ -10,6 +10,7 @@ import com.mongodb.MongoClient;
 
 
 public class MongoWrapper {
+	private static MongoWrapper mongoWrapper;
 	private MongoClient mongoClient = null;
 	public DB db = null;
 	private String ip = "127.0.0.1";
@@ -20,6 +21,18 @@ public class MongoWrapper {
 	public MongoWrapper() throws UnknownHostException{
 		mongoClient = new MongoClient(ip, port);
 		db = mongoClient.getDB(dbname);
+	}
+	
+	public static MongoWrapper getInstance(){
+		if (mongoWrapper == null){
+			try {
+				mongoWrapper = new MongoWrapper();
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return mongoWrapper;
 	}
 	
 	public void destroy(){

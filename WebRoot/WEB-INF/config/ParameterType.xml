@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--物性参数-->
 <ParameterType>
-	<public>
-		<key>pid</key>
-	</public>
 	<!-- configurable -->
 	<pt>
+		<pid>1</pid>
 		<at>杨氏模量</at>
-
 	</pt>
 	<pt>
+		<pid>2</pid>
 		<at>环压强度</at>
 	</pt>
 	<!-- configurable end -->

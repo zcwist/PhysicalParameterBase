@@ -3,13 +3,12 @@
 <RecordType>
 	<public>
 		<key>rid</key>
-		<fkey>pid</fkey>
 		<fkey>oid</fkey>
 	</public>
 	<!-- configurable -->
 	<rt>
 		<!-- 统计规则 -->
-		<rule>Average</rule>
+		<at "rule"="Average">杨氏模量</at>
 	
 	</rt>
 	<!-- configurable end -->

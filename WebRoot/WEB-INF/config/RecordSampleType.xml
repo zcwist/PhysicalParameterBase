@@ -2,12 +2,12 @@
 <!-- 记录样本类型，具体实验数据存放的地方 -->
 <RecordSampleType>
 	<public>
-		<key>rid</key>
-		<fkey>pid</fkey>
+		<key>rsid</key>
 		<fkey>sid</fkey>
 	</public>
 	<!-- configurable -->
 	<rst>
+		<at>杨氏模量</at>
 		<at>测试条件描述</at>
 	</rst>
 	<!-- configurable end -->
