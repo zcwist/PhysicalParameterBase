@@ -8,7 +8,7 @@
 	<!-- configurable -->
 	<rt>
 		<!-- 统计规则 -->
-		<at "rule"="Average">杨氏模量</at>
+		<rule pid="1">Average</rule>
 	
 	</rt>
 	<!-- configurable end -->

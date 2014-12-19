@@ -7,7 +7,7 @@
 	</public>
 	<!-- configurable -->
 	<rst>
-		<at>杨氏模量</at>
+		<pid>1</pid>
 		<at>测试条件描述</at>
 	</rst>
 	<!-- configurable end -->

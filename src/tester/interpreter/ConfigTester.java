@@ -2,6 +2,9 @@ package tester.interpreter;
 
 import interpreter.AttributeType;
 import interpreter.ObjectType;
+import interpreter.ParameterType;
+import interpreter.RecordSampleType;
+import interpreter.RecordType;
 
 public class ConfigTester {
 	/**
@@ -10,8 +13,11 @@ public class ConfigTester {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		attributeTypeTester();
-		objectTypeTester();
+//		objectTypeTester();
 //		mongoAndObjectTypeTester();
+//		parameterTypeTester();
+//		recordTypeTester();
+		recordSampleTypeTester();
 	}
 	
 	public static void attributeTypeTester(){
@@ -22,8 +28,8 @@ public class ConfigTester {
 	
 	public static void objectTypeTester(){
 		ObjectType objectType = new ObjectType();
-		System.out.println(objectType.getPublicList());
-		System.out.println(objectType.getConfigList());
+//		System.out.println(objectType.getPublicList());
+//		System.out.println(objectType.getConfigList());
 		System.out.println(objectType.getFields(1));
 //		JSONObject aObject;
 //		try {
@@ -37,7 +43,18 @@ public class ConfigTester {
 	}
 	public static void mongoAndObjectTypeTester(){
 		ObjectType objectType = new ObjectType();
-		objectType.insert2db(AttributeType.getInstance().getConfig());
+		objectType.insert(AttributeType.getInstance().getConfig());
+	}
+	public static void parameterTypeTester(){
+		System.out.println(ParameterType.getInstance().getParameterName(1));
+	}
+	public static void recordTypeTester(){
+		RecordType record = new RecordType();
+		System.out.println(record.getConfig());
+	}
+	public static void recordSampleTypeTester(){
+		RecordSampleType record = new RecordSampleType();
+		System.out.println(record.getFields(0));
 	}
 	
 }

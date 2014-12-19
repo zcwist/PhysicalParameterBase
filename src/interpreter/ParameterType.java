@@ -26,9 +26,10 @@ public class ParameterType extends GeneralTypeInterpreter {
 		JSONArray atList;
 		try {
 			atList= getConfigList();
+			
 			for (int i = 0; i < atList.length(); i++){
 				JSONObject obj = atList.getJSONObject(i);
-				if (Integer.valueOf(obj.getString("pid")) == pid){
+				if (Integer.valueOf(obj.get("pid").toString()) == pid){
 					return obj.getString("at");
 				}
 				

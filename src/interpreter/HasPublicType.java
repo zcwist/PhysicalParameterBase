@@ -54,7 +54,7 @@ public class HasPublicType extends GeneralTypeInterpreter {
 		return publicList;
 	}
 	
-	public void insert2db(JSONObject obj){
+	private void insert2db(JSONObject obj){
 		BasicDBObject dbObj = (BasicDBObject)JSON.parse(obj.toString());
 		
 		MongoWrapper.getInstance().insertDatatoCollection(dbObj, collName);

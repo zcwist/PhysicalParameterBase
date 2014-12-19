@@ -11,7 +11,7 @@ public class HasAtTag extends HasPublicType {
 	protected void formFields(int i){
 		super.formFields(i);
 		try {
-			JSONArray fieldList = (JSONArray)((JSONObject) getConfigList().get(i)).get("at");
+			JSONArray fieldList = JSONUtil.Object2JsonArray(((JSONObject) getConfigList().get(i)).get("at"));
 			for (int j = 0; j < fieldList.length(); j++){
 				recordRequest.put(fieldList.getString(j),"");
 			}
