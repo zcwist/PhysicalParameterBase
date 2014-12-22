@@ -5,6 +5,10 @@ import interpreter.ObjectType;
 import interpreter.ParameterType;
 import interpreter.RecordSampleType;
 import interpreter.RecordType;
+import interpreter.SampleType;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ConfigTester {
 	/**
@@ -18,6 +22,7 @@ public class ConfigTester {
 //		parameterTypeTester();
 //		recordTypeTester();
 		recordSampleTypeTester();
+//		sampleTypeTester();
 	}
 	
 	public static void attributeTypeTester(){
@@ -41,12 +46,25 @@ public class ConfigTester {
 //		}
 		
 	}
+	public static void sampleTypeTester(){
+		SampleType sampleType = new SampleType();
+		System.out.println(sampleType.getFields().toString().replace("\"", "'"));
+		
+		JSONObject aObject;
+		try {
+			aObject = new JSONObject("{'sid':'1','oid':'1','贯字号':'001'}");
+			sampleType.insert(aObject);
+		} catch (JSONException e){
+			e.printStackTrace();
+		}
+		
+	}
 	public static void mongoAndObjectTypeTester(){
 		ObjectType objectType = new ObjectType();
 		objectType.insert(AttributeType.getInstance().getConfig());
 	}
 	public static void parameterTypeTester(){
-		System.out.println(ParameterType.getInstance().getParameterName(1));
+		System.out.println(ParameterType.getInstance().getParametersName(3));
 	}
 	public static void recordTypeTester(){
 		RecordType record = new RecordType();
@@ -54,7 +72,14 @@ public class ConfigTester {
 	}
 	public static void recordSampleTypeTester(){
 		RecordSampleType record = new RecordSampleType();
-		System.out.println(record.getFields(0));
+		System.out.println(record.getFields(0).toString().replace("\"", "'"));
+		JSONObject aObject;
+		try{
+			aObject = new JSONObject("{'sid':'1','杨氏模量':'0.55','测试条件描述':'hello world','pid':[1],'rsid':'','测试照片':'no Picutre'}");
+			record.insert(aObject);
+		}catch (JSONException e){
+			e.printStackTrace();
+		}
 	}
 	
 }

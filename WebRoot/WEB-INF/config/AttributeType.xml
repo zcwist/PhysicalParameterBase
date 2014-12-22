@@ -32,5 +32,13 @@
 		<type>Picture</type>
 		<!-- when the attribute is a picture, the value will be the URL of the picture -->
 	</at>
+	<at>
+		<name>宽</name>
+		<type>float</type>
+	</at>
+	<at>
+		<name>长</name>
+		<type>float</type>
+	</at>
 	
 </AttributeType>
