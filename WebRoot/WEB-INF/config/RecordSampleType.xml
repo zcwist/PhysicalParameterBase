@@ -9,6 +9,7 @@
 	<rst>
 		<pid>1</pid>
 		<at>测试条件描述</at>
+		<at>测试照片</at>
 	</rst>
 	<!-- configurable end -->
 </RecordSampleType>

@@ -7,7 +7,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mongo-2.10.1.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/PhysicalParameterBase/WebRoot/WEB-INF/lib/mongo-java-driver-2.10.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="https://api.mongodb.org/java/2.10.1/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.json-20120521.jar">

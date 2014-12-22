@@ -57,4 +57,9 @@ public class MongoWrapper {
 		DBCollection coll = db.getCollection(collName);
 		return coll.find(query);
 	}
+	
+	public DBCursor getValueFromColl(BasicDBObject ref, BasicDBObject keys, String collName){
+		DBCollection coll = db.getCollection(collName);
+		return coll.find(ref,keys);
+	}
 }

@@ -22,7 +22,7 @@ public class ParameterType extends GeneralTypeInterpreter {
 	 * @return parameter name
 	 */
 	
-	public String getParameterName(int pid){
+	public JSONArray getParametersName(int pid){
 		JSONArray atList;
 		try {
 			atList= getConfigList();
@@ -30,7 +30,7 @@ public class ParameterType extends GeneralTypeInterpreter {
 			for (int i = 0; i < atList.length(); i++){
 				JSONObject obj = atList.getJSONObject(i);
 				if (Integer.valueOf(obj.get("pid").toString()) == pid){
-					return obj.getString("at");
+					return JSONUtil.Object2JsonArray(obj.get("at"));
 				}
 				
 			}

@@ -43,19 +43,19 @@ public class GeneralTypeInterpreter {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		try{
-			return config.getJSONArray(configListTag);
-		}catch(JSONException e){
-//			e.printStackTrace();
-		}
-		try {
-			//when there is only one element, a jsonobject, rather than a jsonarray will be returned.
-			JSONArray obj2arr = new JSONArray();
-			obj2arr.put(config.getJSONObject(configListTag));
-			return obj2arr;
-		} catch (JSONException e){
-//			e.printStackTrace();
-		}
+//		try{
+//			return config.getJSONArray(configListTag);
+//		}catch(JSONException e){
+////			e.printStackTrace();
+//		}
+//		try {
+//			//when there is only one element, a jsonobject, rather than a jsonarray will be returned.
+//			JSONArray obj2arr = new JSONArray();
+//			obj2arr.put(config.getJSONObject(configListTag));
+//			return obj2arr;
+//		} catch (JSONException e){
+////			e.printStackTrace();
+//		}
 		
 		return null;
 	}
