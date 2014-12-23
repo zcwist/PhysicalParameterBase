@@ -5,7 +5,7 @@ import com.mongodb.DBCursor;
 
 import dao.MongoWrapper;
 
-public class ObjectType extends HasAtTag{
+public class ObjectType extends HasAgtTag{
 	public ObjectType(){
 		configListTag = "ot";
 	}

@@ -62,4 +62,8 @@ public class MongoWrapper {
 		DBCollection coll = db.getCollection(collName);
 		return coll.find(ref,keys);
 	}
+	public void update(BasicDBObject query, BasicDBObject value, String collName){
+		DBCollection coll = db.getCollection(collName);
+		coll.update(query, value, true, true);
+	}
 }

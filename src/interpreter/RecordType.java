@@ -27,6 +27,7 @@ public class RecordType extends HasPublicType implements Updatable{
 		for (int i = 0; i < pidList.length(); i++){
 			try {
 				String pid = pidList.get(i).toString();
+				
 				DBCursor cursor = getDocWithOidAndPid(oid,pid);
 				if (docExist(cursor)){
 					
