@@ -73,10 +73,11 @@ public class ConfigTester {
 	public static void recordSampleTypeTester(){
 		RecordSampleType record = new RecordSampleType();
 		System.out.println(record.getFields(0).toString().replace("\"", "'"));
+//		System.out.println(record.getFields(0).toString());
 		JSONObject aObject;
 		try{
-			aObject = new JSONObject("{'sid':'1','杨氏模量':'0.55','测试条件描述':'hello world','pid':[1],'rsid':'','测试照片':'no Picutre'}");
-			record.insert(aObject);
+			aObject = new JSONObject("{'sid':'1','测试条件描述':'hello world','pid':[{'at':[{'atType':'杨氏模量','unit':'GPa','value':'0.55','type':'float'}],'pid':1}],'rsid':'1','测试照片':'no'}");
+			record.insert(aObject, true);
 		}catch (JSONException e){
 			e.printStackTrace();
 		}

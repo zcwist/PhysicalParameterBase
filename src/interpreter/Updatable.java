@@ -4,6 +4,6 @@ import org.json.JSONArray;
 
 
 public interface Updatable {
-	public void update(String sid, JSONArray idList);
+	public void update(String oid, JSONArray idList);
 
 }

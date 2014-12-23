@@ -35,10 +35,12 @@
 	<at>
 		<name>宽</name>
 		<type>float</type>
+		<unit>mm</unit>
 	</at>
 	<at>
 		<name>长</name>
 		<type>float</type>
+		<unit>mm</unit>
 	</at>
 	
 </AttributeType>
