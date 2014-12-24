@@ -1,6 +1,5 @@
 package interpreter;
 
-import interpreter.calculate.Average;
 import interpreter.calculate.CalculateStrategyInterface;
 
 import org.json.JSONArray;
@@ -26,11 +25,32 @@ public class RecordType extends HasPublicType implements Updatable{
 	 * when a record sample is inserted into db, it make the statistics in record type collection change.
 	 */
 	public void update(String oid, JSONArray pidList){
-		System.out.println(pidList);
+//		System.out.println("PidList:" + pidList);
 		for (int i = 0; i < pidList.length(); i++){
 			try {
 				String pid = ((JSONObject)pidList.get(i)).get("pid").toString();
-				calculate(oid, pid);
+				JSONArray template = pidList.getJSONObject(i).getJSONArray("at");
+				System.out.println("template:" + template);
+				JSONObject result = new JSONObject();
+				result.put("pid", pid);
+				result.put("oid", oid);
+				JSONObject cal = calculate(oid, pid);
+				JSONArray resultValueList = new JSONArray();
+				for (int j = 0; j < template.length(); j++){
+					JSONObject atTemplate = template.getJSONObject(j);
+					String atType = atTemplate.get("atType").toString();
+					atTemplate.put("value", cal.get(atType));
+					resultValueList.put(atTemplate);
+				}
+				result.put("value", resultValueList);
+				JSONObject query = new JSONObject();
+				query.put("oid", oid);
+				query.put("pid", pid);
+				MongoWrapper.getInstance().update(query, result, "RecordType");
+				
+				
+				System.out.println(result);
+				
 				
 
 				
@@ -58,7 +78,7 @@ public class RecordType extends HasPublicType implements Updatable{
 		for (int i = 0; i < parameterList.length(); i++){
 			result.put(parameterList.get(i).toString(), new JSONArray());
 		}
-		System.out.println(result);
+//		System.out.println(result);
 		
 		
 		
@@ -72,7 +92,7 @@ public class RecordType extends HasPublicType implements Updatable{
 
 			JSONArray parameterValueList = (JSONArray)(new JSONObject(queryResult.next().toString())).get("pid");
 			
-			System.out.println(parameterValueList);
+//			System.out.println(parameterValueList);
 			for (int i = 0; i < parameterValueList.length(); i++){
 				JSONObject parameterValue = (JSONObject)parameterValueList.get(i);
 				if (parameterValue.get("pid").toString().equals(pid)){
@@ -80,7 +100,7 @@ public class RecordType extends HasPublicType implements Updatable{
 					for (int j = 0; j < atList.length(); j++){
 						JSONObject at = (JSONObject)atList.get(j);
 						result.accumulate(at.get("atType").toString(), at.get("value").toString());
-
+						
 					}
 					
 					
@@ -91,12 +111,13 @@ public class RecordType extends HasPublicType implements Updatable{
 		return result;	
 	}
 	
-	private void calculate(String oid, String pid){
+	private JSONObject calculate(String oid, String pid){
 		try {
 			JSONObject datasource = getSource(oid,pid);
-			Class<?> demo = Class.forName("interpreter.calculate."+"Average");
+			String strategy = getStrategyName(pid);
+			Class<?> demo = Class.forName("interpreter.calculate." + strategy);
 			CalculateStrategyInterface cal = (CalculateStrategyInterface)demo.newInstance();
-			System.out.println(cal.calculate(datasource));
+			return cal.calculate(datasource);
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -111,6 +132,25 @@ public class RecordType extends HasPublicType implements Updatable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		return null;
+	}
+	
+	private String getStrategyName(String pid){
+		try {
+			JSONArray ruleList = JSONUtil.Object2JsonArray(getConfig().get("rt"));
+			for (int i = 0; i < ruleList.length(); i++){
+				JSONObject rule = ruleList.getJSONObject(i).getJSONObject("rule");
+//				System.out.println(rule);
+				if (rule.get("pid").toString().equals(pid)){
+					return rule.getString("content");
+				}
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 

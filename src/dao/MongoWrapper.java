@@ -1,6 +1,10 @@
 package dao;
 
+import interpreter.JSONUtil;
+
 import java.net.UnknownHostException;
+
+import org.json.JSONObject;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -62,8 +66,11 @@ public class MongoWrapper {
 		DBCollection coll = db.getCollection(collName);
 		return coll.find(ref,keys);
 	}
-	public void update(BasicDBObject query, BasicDBObject value, String collName){
+	public void update(JSONObject query, JSONObject value, String collName){
 		DBCollection coll = db.getCollection(collName);
-		coll.update(query, value, true, true);
+
+		System.out.println(query);
+		System.out.println(value);
+		coll.update(JSONUtil.JSONObject2BasicDBObject(query), JSONUtil.JSONObject2BasicDBObject(value), true, false);
 	}
 }

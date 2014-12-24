@@ -18,9 +18,9 @@ public class Average implements CalculateStrategyInterface {
 			JSONArray valueList;
 			try {
 				valueList = (JSONArray)datasource.get(key);
-				float sum = 0;
+				double sum = 0;
 				for (int i = 0; i < valueList.length(); i++){
-					sum += Float.valueOf(valueList.get(i).toString());
+					sum += Double.valueOf(valueList.get(i).toString());
 				}
 				result.put(key, sum / valueList.length());
 			} catch (JSONException e) {

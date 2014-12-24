@@ -75,7 +75,7 @@ public class RecordSampleType extends HasAtTag {
 			oid = ObjectType.getOid(sid);
 			aObject.put("oid", oid);
 			
-//			super.insert(aObject);
+			super.insert(aObject);
 			System.out.println(aObject);
 			
 			if(refresh){

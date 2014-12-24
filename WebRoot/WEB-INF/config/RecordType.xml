@@ -11,5 +11,8 @@
 		<rule pid="1">Average</rule>
 	
 	</rt>
+	<rt>
+		<rule pid="3">Average</rule>
+	</rt>
 	<!-- configurable end -->
 </RecordType>
