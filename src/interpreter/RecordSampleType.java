@@ -12,7 +12,7 @@ public class RecordSampleType extends HasAtTag {
 		super.formFields(i);
 		try {
 			JSONArray pidList = JSONUtil.Object2JsonArray(((JSONObject)getConfigList().get(i)).get("pid"));
-			System.out.println(recordRequest);
+//			System.out.println(recordRequest);
 			
 			//Parameter List
 //			recordRequest.put("pid", pidList);

@@ -11,5 +11,8 @@
 		<at>测试条件描述</at>
 		<at>测试照片</at>
 	</rst>
+	<rst>
+		<pid>3</pid>
+	</rst>
 	<!-- configurable end -->
 </RecordSampleType>

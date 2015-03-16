@@ -11,6 +11,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
+import com.mongodb.util.JSON;
 
 
 public class MongoWrapper {
@@ -22,7 +23,7 @@ public class MongoWrapper {
 	private int port = 27017;
 	private String dbname = "PhysicalParameterInATM";
 	
-	public MongoWrapper() throws UnknownHostException{
+	private MongoWrapper() throws UnknownHostException{
 		mongoClient = new MongoClient(ip, port);
 		db = mongoClient.getDB(dbname);
 	}
@@ -56,21 +57,43 @@ public class MongoWrapper {
 		DBCollection coll = db.getCollection(collName);
 		coll.insert(data);
 	}
+	public void insertDatatoCollection(JSONObject data, String collName){
+		BasicDBObject dbObj = (BasicDBObject) JSON.parse(data.toString());
+		insertDatatoCollection(dbObj,collName);
+	}
 	
-	public DBCursor getAObjectFromColl(BasicDBObject query, String collName){
+	public DBCursor getObjectFromColl(BasicDBObject query, String collName){
 		DBCollection coll = db.getCollection(collName);
 		return coll.find(query);
 	}
+	
+	public BasicDBObject getOneObjectFromColl(BasicDBObject query, String collName){
+		DBCollection coll = db.getCollection(collName);
+		return (BasicDBObject) coll.findOne(query);
+	}
+	
+
 	
 	public DBCursor getValueFromColl(BasicDBObject ref, BasicDBObject keys, String collName){
 		DBCollection coll = db.getCollection(collName);
 		return coll.find(ref,keys);
 	}
 	public void update(JSONObject query, JSONObject value, String collName){
+		if (!db.collectionExists(collName)){
+			db.createCollection(collName, null);
+		}
 		DBCollection coll = db.getCollection(collName);
 
 		System.out.println(query);
 		System.out.println(value);
 		coll.update(JSONUtil.JSONObject2BasicDBObject(query), JSONUtil.JSONObject2BasicDBObject(value), true, false);
+	}
+	public void update(BasicDBObject query, BasicDBObject value, String collName){
+		if (!db.collectionExists(collName)){
+			db.createCollection(collName, null);
+		}
+		DBCollection coll = db.getCollection(collName);
+
+		coll.update(query, value, true, false);
 	}
 }

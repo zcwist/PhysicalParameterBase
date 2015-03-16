@@ -1,6 +1,7 @@
 package interpreter;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.mongodb.BasicDBObject;
@@ -18,6 +19,16 @@ public class JSONUtil {
 	
 	public static BasicDBObject JSONObject2BasicDBObject(JSONObject obj){
 		return (BasicDBObject) JSON.parse(obj.toString());
+	}
+	
+	public static JSONObject basicDBObject2JSONObject(BasicDBObject obj){
+		try {
+			return new JSONObject(obj.toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

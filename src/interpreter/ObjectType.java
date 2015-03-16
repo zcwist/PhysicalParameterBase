@@ -1,5 +1,11 @@
 package interpreter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import webutil.CatagoryTree;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 
@@ -20,5 +26,29 @@ public class ObjectType extends HasAtTag{
 			return (String) cursor.next().get("oid");
 		}
 		return null;
+	}
+	
+	/**
+	 * 
+	 */
+	public JSONArray getAtList(int i)
+	{
+		try {
+			return ((JSONObject)getConfigList().get(i)).getJSONArray("at");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	/**
+	 * insert a new Object to DB
+	 * @param aObject Object
+	 * @param atIndex the order of the attribute list of the object
+	 */
+	public void insert(JSONObject aObject, int atIndex)
+	{
+		super.insert(aObject);
+		CatagoryTree.updateTree(aObject, this.getAtList(atIndex));
 	}
 }

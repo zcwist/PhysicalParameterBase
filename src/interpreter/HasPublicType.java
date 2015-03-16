@@ -35,6 +35,7 @@ public class HasPublicType extends GeneralTypeInterpreter {
 		
 		//for public fields
 		JSONObject publicFields = getPublicList();
+		
 		@SuppressWarnings("unchecked")
 		Iterator<String> iter = publicFields.keys();
 		while(iter.hasNext()){
@@ -96,6 +97,7 @@ public class HasPublicType extends GeneralTypeInterpreter {
 	 * Having filled with the fields, you got a aObject to be inserted into db
 	 * @param aObject
 	 */
+	
 	public void insert(JSONObject aObject){
 		if (isValid(aObject))
 			insert2db(aObject);

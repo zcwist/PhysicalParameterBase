@@ -13,13 +13,18 @@ public class HasAtTag extends HasPublicType {
 		try {
 			JSONArray fieldList = JSONUtil.Object2JsonArray(((JSONObject) getConfigList().get(i)).get("at"));
 			for (int j = 0; j < fieldList.length(); j++){
+				
 				recordRequest.put(fieldList.getString(j),"");
+				
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("no attribute");
+			return;
 		}
 		
 	}
+	
+	
 
 }

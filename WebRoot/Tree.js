@@ -5,10 +5,10 @@ function getTree() {
       text: "物理对象",
       nodes: [
         {
-          text: "美元",
+          text: "介质类型:美元",
           nodes: [
             {
-              text: "五成新美元",
+              text: "新旧程度:５",
               nodes: [
                 {
                   text:"5美元"
@@ -19,7 +19,7 @@ function getTree() {
               ]
             },
             {
-              text: "七成新美元"
+              text: "新旧程度:７"
             }
           ]
         },
@@ -27,23 +27,38 @@ function getTree() {
           text:"欧元"
         },
         {
-          text: "支票",
+          text: "介质类型:支票",
           nodes:[
                 {
-                  text:"大尺寸支票"
+                  text:"尺寸:大"
                 },
                 {
-                  text:"中尺寸支票"
+                  text:"尺寸:中"
                 },
                 {
-                  text:"小尺寸支票"
+                  text:"尺寸:小"
                 }
           ]
         }
-]
-}
-]
-          return tree;
+      ]
       }
-$('#tree').treeview({data: getTree()});
+    ];
+          return tree;
+}
+
+$.post("servlet/QueryServlet",{parentNode:""},function(result){
+  // $('#tree').text(result);
+  console.log(result);
+  $.each(result, function(index,val){
+    console.log(index + "   " + val);
+
+  })
+})
+
+// $('#tree').treeview({data: getTree()});
+// $('#tree').on('nodeSelected',function(event,node){
+//   if (node._nodes == null)
+//   console.log(node);
+
+// });
 });
