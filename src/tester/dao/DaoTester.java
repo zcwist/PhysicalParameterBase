@@ -1,5 +1,6 @@
 package tester.dao;
 
+import dao.RecordSampleTypeDao;
 import dao.RecordTypeDao;
 
 public class DaoTester {
@@ -9,7 +10,8 @@ public class DaoTester {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		RecordTypeDaoTester();
+//		RecordTypeDaoTester();
+		RecordSampleTypeTester();
 		
 	}
 	
@@ -17,4 +19,7 @@ public class DaoTester {
 		System.out.println(new RecordTypeDao().getItemsByOid("1"));
 	}
 
+	public static void RecordSampleTypeTester(){
+		System.out.println(new RecordSampleTypeDao().getRecordSampleByOidPid("1","3"));
+	}
 }

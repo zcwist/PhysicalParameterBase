@@ -30,7 +30,7 @@ public class RecordTypeDao extends GeneralDao{
 		while(result.hasNext()){
 			BasicDBObject obj = (BasicDBObject) result.next();
 			obj.remove("_id");
-			System.out.println(obj);
+//			System.out.println(obj);
 			resultJson.put(JSONUtil.basicDBObject2JSONObject(obj));
 		}
 		return resultJson;

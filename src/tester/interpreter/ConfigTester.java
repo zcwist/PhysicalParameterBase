@@ -93,7 +93,7 @@ public class ConfigTester {
 //		System.out.println(objectType.getFields(1));
 		JSONObject aObject;
 		try {
-			aObject = new JSONObject("{\"介质类型\":\"美元\",\"oid\":\"1\",\"新旧程度\":\"七\",\"ObjectName\":\"七成新美元\"}");
+			aObject = new JSONObject("{\"介质类型\":\"美元\",\"oid\":\"1\",\"新旧程度\":\"五\",\"ObjectName\":\"五成新美元\"}");
 			objectType.insert(aObject,0);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -104,8 +104,9 @@ public class ConfigTester {
 		
 	}
 	public static void sampleTypeTester(){
-		SampleType sampleType = new SampleType();
-		System.out.println(sampleType.getFields().toString().replace("\"", "'"));
+//		SampleType sampleType = new SampleType();
+//		System.out.println(sampleType.getFields().toString().replace("\"", "'"));
+		System.out.println(SampleType.getSampleTypeName("1"));
 		
 //		JSONObject aObject;
 //		try {

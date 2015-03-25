@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.11.5/vue.min.js"></script>
+		<link rel="stylesheet" href="css/PPMS.css">
+		<script src="script.js"></script>
+		<script src="VueDemo.js"></script>
+		<link rel="stylesheet" href="VueDemo.css">
+		<!-- item template -->
+		<script type="text/x-template" id="item-template">
+		  <div v-class="bold: isFolder"
+		    v-on="click: toggle, dblclick: changeType">
+		    {{model.name}}
+		    <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
+		  </div>
+		  <ul v-show="open" v-if="isFolder">
+		    <li class="item"
+		      v-repeat="model: model.children"
+		      v-component="item">
+		    </li>
+		    <li v-on="click: addChild">+</li>
+		  </ul>
+		</script>
+		<title>Management System</title>
+	</head>
+	<body>
+		
+
+		<p>(You can double click on an item to turn it into a folder.)</p>
+
+		<!-- the demo root element -->
+		<ul id="demo">
+		  <li class="item"
+		    v-component="item"
+		    v-with="model: treeData">
+		  </li>
+		</ul>
+	</body>
+</html>

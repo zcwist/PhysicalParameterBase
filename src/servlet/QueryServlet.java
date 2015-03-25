@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import webutil.CatagoryTree;
+import dao.RecordSampleTypeDao;
+import dao.RecordTypeDao;
 
 public class QueryServlet extends HttpServlet {
 
@@ -64,10 +66,26 @@ public class QueryServlet extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("application/json; charset=utf-8");
-		String parentNode = request.getParameter("parentNode");
-		if (parentNode.length() == 0) parentNode = null;
 		PrintWriter out = response.getWriter();
-		out.println(CatagoryTree.getNodesByParentNode(parentNode));
+		String askFor = request.getParameter("askFor");
+		if (askFor.equals("recordTable")){
+			String objectId = request.getParameter("objectId");
+			System.out.println("oid:" + objectId);
+			out.println(new RecordTypeDao().getItemsByOid(objectId).toString());
+		}
+		else if (askFor.equals("objectTree")){
+		
+			String parentNode = request.getParameter("parentNode");
+			if (parentNode.length() == 0) parentNode = null;
+			
+			out.println(CatagoryTree.getNodesByParentNode(parentNode));
+		}
+		else if (askFor.equals("sampleTable")){
+			String objectId = request.getParameter("objectId");
+			String parameterId = request.getParameter("parameterId");
+			out.println(new RecordSampleTypeDao().getRecordSampleByOidPid(objectId, parameterId));
+			
+		}
 		out.flush();
 		out.close();
 	}

@@ -4,27 +4,14 @@
 		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="css/PPMS.css">
-		<link rel="stylesheet" href="css/jquery.treegrid.css">
-		<script type="text/javascript" src="js/bootstrap-treeview.js"></script>
-		<script type="text/javascript" src="VueTree.js"></script>
+
+
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 		<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.11.5/vue.min.js"></script>
-		<script type="text/x-template" id="item-template">
-		  	<div v-class="bold: isFolder"
-		    	v-on="click: toggle">
-		    	{{model.name}}
-		    	<span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
-		  	</div>
-		  	<ul v-show="open" v-if="isFolder">
-		    	<li class="item"
-		      		v-repeat="model: model.children"
-		      		v-component="item">
-		    	</li>
-		  	</ul>
-		</script>
+		<script src="RecordSampleJS.js"></script>
 		<title>Management System</title>
+
 	</head>
 	<body>
 
@@ -60,48 +47,12 @@
 								<a class="header" href="">
 									<span class="glyphicon glyphicon-log-in"></span>
 								</a>
-							</li>		
+							</li>
+						</ul>		
 					</div>
 				</div>
 			</div>
 		</header>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div id="tree">
-						<!-- the demo root element -->
-						<ul id="demo">
-						  	<li class="item"
-						    	v-component="item"
-						   		v-with="model: treeData">
-						  	</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-9">
-					<table class="table" id="parameterTable">
-					   	<caption>
-					   		<h3>
-					   			<div id="table-title">物性参数表</div>
-					   			
-					   		</h3>
-					   	</caption>
-					   	<thead>
-					      <tr>
-					         <th>物性参数</th>
-					         <th>值</th>
-					         <th>单位</th>
-					         <th>数据源</th>
-					      </tr>
-					   	</thead>
-
-					   	<tbody id='recordContent'>
-					     
-					   	</tbody>
-
-					</table>
-				</div>
-			</div>
-		</div>
+		
 	</body>
 </html>

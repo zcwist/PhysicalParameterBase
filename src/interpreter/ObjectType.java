@@ -51,4 +51,10 @@ public class ObjectType extends HasAtTag{
 		super.insert(aObject);
 		CatagoryTree.updateTree(aObject, this.getAtList(atIndex));
 	}
+	
+	public static String getObjectNameByOid(String oid){
+		BasicDBObject query = new BasicDBObject().append("oid", oid);
+		BasicDBObject result = MongoWrapper.getInstance().getOneObjectFromColl(query, "ObjectType");
+		return result.getString("ObjectName");
+	}
 }

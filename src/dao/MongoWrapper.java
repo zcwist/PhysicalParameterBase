@@ -78,6 +78,12 @@ public class MongoWrapper {
 		DBCollection coll = db.getCollection(collName);
 		return coll.find(ref,keys);
 	}
+	
+	public BasicDBObject getSelectedValueFromColl(BasicDBObject query, BasicDBObject fields, String collName){
+		DBCollection coll = db.getCollection(collName);
+		return (BasicDBObject) coll.findOne(query,fields);
+	}
+	
 	public void update(JSONObject query, JSONObject value, String collName){
 		if (!db.collectionExists(collName)){
 			db.createCollection(collName, null);
