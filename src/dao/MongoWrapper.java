@@ -50,13 +50,28 @@ public class MongoWrapper {
 		}
 	}
 	
-	public void insertDatatoCollection(BasicDBObject data, String collName){
+	public BasicDBObject insertDatatoCollection(BasicDBObject data, String collName){
 		if (!db.collectionExists(collName)){
 			db.createCollection(collName, null);
 		}
 		DBCollection coll = db.getCollection(collName);
 		coll.insert(data);
+		return data;
 	}
+	
+	public BasicDBObject upsertDatatoCollection(BasicDBObject data, String collName){
+		if (!db.collectionExists(collName)){
+			db.createCollection(collName, null);
+		}
+		DBCollection coll = db.getCollection(collName);
+		BasicDBObject result = (BasicDBObject) coll.findOne(data);
+		if ((result) == null){
+			coll.insert(data);
+			result = data;
+		}
+		return result;
+	}
+	
 	public void insertDatatoCollection(JSONObject data, String collName){
 		BasicDBObject dbObj = (BasicDBObject) JSON.parse(data.toString());
 		insertDatatoCollection(dbObj,collName);
@@ -94,12 +109,15 @@ public class MongoWrapper {
 		System.out.println(value);
 		coll.update(JSONUtil.JSONObject2BasicDBObject(query), JSONUtil.JSONObject2BasicDBObject(value), true, false);
 	}
-	public void update(BasicDBObject query, BasicDBObject value, String collName){
+	public BasicDBObject update(BasicDBObject query, BasicDBObject value, String collName){
 		if (!db.collectionExists(collName)){
 			db.createCollection(collName, null);
 		}
 		DBCollection coll = db.getCollection(collName);
 
 		coll.update(query, value, true, false);
+		System.out.println(value.getObjectId("_id"));
+		System.out.println(query.getObjectId("_id"));
+		return value;
 	}
 }
