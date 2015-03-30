@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var data = {
       	name: 'root',
+      	objectId: null,
       	oid: null,
       	children: []
     }
@@ -32,7 +33,8 @@ $(document).ready(function(){
 	        			//the children of the node hasn't been loaded
 	        			this.changeType();
 	        			var nodeName = (this.model.name == 'root')? "":this.model.name;
-	        			this.loadTreeData(nodeName,this);
+	        			var objectId = this.model.objectId;
+	        			this.loadTreeData(nodeName,objectId,this);
 	        		}
 	        		this.open = !this.open
 	        	}
@@ -47,16 +49,18 @@ $(document).ready(function(){
         		this.open = true
           		
         	},
-        	addChild: function (nodeName,oid) {
+        	addChild: function (objectId,nodeName,oid) {
           		this.model.children.push({
             		name: nodeName,
+            		objectId: objectId,
             		oid:oid
           		})
        		},
-       		loadTreeData: function(nodeName,model){
-       			$.post("servlet/QueryServlet",{"askFor":"objectTree","parentNode":nodeName},function(result){
+       		loadTreeData: function(nodeName,objectId,model){
+       			console.log(objectId);
+       			$.post("servlet/QueryServlet",{"askFor":"objectTree","objectId":objectId},function(result){
         			$.each(result.child, function(index,val){
-        				model.addChild(val._id,val.oid);
+        				model.addChild(val.objectId,val.nodeName,val.oid);
         				
         			})
         			this.open = true;

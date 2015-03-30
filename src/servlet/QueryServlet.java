@@ -75,10 +75,12 @@ public class QueryServlet extends HttpServlet {
 		}
 		else if (askFor.equals("objectTree")){
 		
-			String parentNode = request.getParameter("parentNode");
-			if (parentNode.length() == 0) parentNode = null;
-			
-			out.println(CatagoryTree.getNodesByParentNode(parentNode));
+//			String parentNode = request.getParameter("parentNode");
+//			if (parentNode.length() == 0) parentNode = null;
+//			
+//			out.println(CatagoryTree.getNodesByParentNode(parentNode));
+			String objectId = request.getParameter("objectId");
+			out.println(CatagoryTree.getChildrenNodes(objectId));
 		}
 		else if (askFor.equals("sampleTable")){
 			String objectId = request.getParameter("objectId");

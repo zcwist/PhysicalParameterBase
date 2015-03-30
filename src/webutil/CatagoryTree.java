@@ -142,5 +142,46 @@ public class CatagoryTree {
 		return result;
 	}
 	
+	/**
+	 * According to the nodeName and id, return the children nodes in JSON
+	 * @param nodeName
+	 * @param id
+	 * @return
+	 */
+	
+	public static JSONObject getChildrenNodes(String parentId){
+		BasicDBObject query = new BasicDBObject();
+		System.out.println("parentId:" + parentId);
+		if (parentId.length() == 0){
+			query.append("parentId", null);
+		} else {
+			query.append("parentId", new ObjectId(parentId));
+		}
+		System.out.println(query);
+		DBCursor cursor = mongo.getObjectFromColl(query, "tree");
+		
+		JSONObject result = new JSONObject();
+		try {
+			while (cursor.hasNext())
+			{
+				BasicDBObject item = (BasicDBObject) cursor.next();
+				item.remove("parentId");
+				String id = item.getObjectId("_id").toString();
+//				System.out.println(id);
+				item.remove("_id");
+				item.append("objectId", id);
+				result.append("child", item);
+				
+			}
+			result.accumulate("parentId", parentId );
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		return result;
+	}
+	
 
 }
