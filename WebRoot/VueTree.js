@@ -65,8 +65,7 @@ $(document).ready(function(){
       	}
     })
 
-	var tableDataSample = '[{"oid":"1","value":[{"atType":"杨氏模量","unit":"GPa","value":0.65,"type":"float"}],"pid":"1"},{"oid":"1","value":[{"atType":"长","unit":"mm","value":155.9057142857143,"type":"float"},{"atType":"宽","unit":"mm","value":65.71428571428571,"type":"float"}],"pid":"3"}]';
-
+	var tableDataSample = '[{"oid":"1","value":{"atType":"杨氏模量","unit":"GPa","value":0.655,"type":"float"},"pid":"1"}]';
 
 	var generateTable = function(nodeModel){
 		var nodeName = nodeModel.name;
@@ -76,15 +75,15 @@ $(document).ready(function(){
 		$.post("servlet/QueryServlet",{"askFor":"recordTable","objectId":objectId},function(result){
 			var tableHtml = '';
 			$.each(result, function(index,val){
+				console.log(val);
 				var parameterId = val.pid;
 
-				$.each(val.value,function(index, val){
-					tableHtml += generateTr(val,objectId,parameterId);
+				// $.each(val.value,function(index, val){
+					tableHtml += generateTr(val.value,objectId,parameterId);
 
-				})
+				// })
 
 			});
-			console.log(tableHtml);
 			$('#recordContent').html(tableHtml);
 		})
 

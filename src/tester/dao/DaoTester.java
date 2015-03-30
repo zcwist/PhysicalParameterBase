@@ -20,6 +20,6 @@ public class DaoTester {
 	}
 
 	public static void RecordSampleTypeTester(){
-		System.out.println(new RecordSampleTypeDao().getRecordSampleByOidPid("1","3"));
+		System.out.println(new RecordSampleTypeDao().getRecordSampleByOidPid("1","1"));
 	}
 }

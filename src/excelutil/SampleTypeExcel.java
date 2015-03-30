@@ -22,6 +22,10 @@ public class SampleTypeExcel extends GerneralExcel{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public SampleTypeExcel(int index, SampleType sampleType){
+		super(index, sampleType);
+	}
+	
 	public void readXLS(){
 		try {
 			SampleType objectType = new SampleType();

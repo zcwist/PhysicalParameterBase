@@ -1,5 +1,7 @@
 package excelutil;
 
+import interpreter.HasPublicType;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,10 +17,17 @@ public class GerneralExcel{
 	protected String tableName;
 	protected String path;
 	protected JSONObject template;
+	protected int templateIndex;	//模板序号
 	public GerneralExcel(JSONObject template){
 		this.tableName = this.getClass().getSimpleName();
 		this.template = template;
 		path = "/";
+	}
+	
+	public GerneralExcel(int index, HasPublicType hasPublicType){
+		this.tableName = this.getClass().getSimpleName();
+		this.template = hasPublicType.getFields(index);
+		this.templateIndex= index;
 	}
 	
 	/**

@@ -4,6 +4,8 @@ import interpreter.JSONUtil;
 import interpreter.ObjectType;
 import interpreter.SampleType;
 
+import java.util.Set;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +35,7 @@ public class RecordSampleTypeDao extends GeneralDao{
 	public JSONObject getRecordSampleByOidPid(String oid, String pid){
 		JSONObject result = new JSONObject(); // the whole result
 		try {
+			System.out.println(pid);
 			result.accumulate("ObjectName", ObjectType.getObjectNameByOid(oid));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -42,33 +45,53 @@ public class RecordSampleTypeDao extends GeneralDao{
 		DBCursor cursor = mongo.getObjectFromColl(query, collName);
 		while (cursor.hasNext()){
 			BasicDBObject recordItem = (BasicDBObject)cursor.next();
+//			System.out.println(recordItem);
+			
+			
 			JSONObject sampleName = SampleType.getSampleTypeName(recordItem.getString("sid"));
-			BasicDBList pidList = (BasicDBList) recordItem.get("pid");
+			BasicDBList pidList = (BasicDBList) recordItem.get("pidList");
 			
 			for (Object pidItem : pidList){
 				BasicDBObject pidObject = (BasicDBObject)pidItem;
 				if (pidObject.get("pid").equals(pid)){
 					//System.out.println(pidItem.toString());
-					BasicDBList atList = (BasicDBList) pidObject.get("at");
-					for (Object atItem: atList){
-						BasicDBObject atObject = (BasicDBObject)atItem;
-						JSONObject aRecord = new JSONObject();
+					BasicDBObject atObject = (BasicDBObject) pidObject.get("at");
+
+					JSONObject aRecord = new JSONObject();
+					try {
+						aRecord.accumulate("data", JSONUtil.basicDBObject2JSONObject(atObject));
+						aRecord.accumulate("title", sampleName);
+						Set<String> otherDesc = recordItem.keySet();
+						
+						otherDesc.remove("sid");
+						otherDesc.remove("pidList");
+						otherDesc.remove("_id");
+						otherDesc.remove("rsid");
+						otherDesc.remove("oid");
 						try {
-							aRecord.accumulate("data", JSONUtil.basicDBObject2JSONObject(atObject));
-							aRecord.accumulate("title", sampleName);
-							result.append("content", aRecord);
+							JSONObject otherInfo = new JSONObject();
+							for (String key : otherDesc){
+								otherInfo.accumulate(key, recordItem.getString(key));
+							}
+							aRecord.accumulate("otherInfo", otherInfo);
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
-						
+						result.append("content", aRecord);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
+
 				}
 			}
+			
+			
 
 			
 		}
+		System.out.println(result);
 		
 		
 		return result;

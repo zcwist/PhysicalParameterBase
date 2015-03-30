@@ -16,11 +16,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ObjectTypeExcel extends GerneralExcel{
-	
+
 	public ObjectTypeExcel(JSONObject template) {
 		super(template);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public ObjectTypeExcel(int index, ObjectType objectType){
+		super(index,objectType);
+	}
+
 
 	
 	public void readXLS(){
@@ -37,7 +42,7 @@ public class ObjectTypeExcel extends GerneralExcel{
 					row.getCell(j).setCellType(Cell.CELL_TYPE_STRING);
 					record.put(rowTitle.getCell(j).getStringCellValue(), row.getCell(j).getStringCellValue());
 				}
-				objectType.insert(record); 
+				objectType.insert(record,templateIndex); 
 			}
 			
 			

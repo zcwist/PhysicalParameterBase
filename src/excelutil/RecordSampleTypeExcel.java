@@ -26,29 +26,38 @@ public class RecordSampleTypeExcel extends GerneralExcel{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public RecordSampleTypeExcel(int index, RecordSampleType recordSample){
+		super(index, recordSample);
+	}
+	
 	public void generateXLS(){
 		Workbook wb = new HSSFWorkbook();
 		Sheet sheet = wb.createSheet(tableName);
 		Row row = sheet.createRow(0);
 		@SuppressWarnings("rawtypes")
 		Iterator iter = template.keys();
+		System.out.println(template);
 		int i = 0;
 		while (iter.hasNext()){
 			String key = iter.next().toString();
-			if (!key.equals("pid")){
+			
+			if (!key.equals("pidList")){
 				row.createCell(i).setCellValue(key);
 				i++;
 			} else {
 				try {
 					JSONArray pidList = template.getJSONArray(key);
 					for (int j = 0; j < pidList.length(); j++){
-						JSONArray atList = pidList.getJSONObject(j).getJSONArray("at");
-						System.out.println(atList);
-						for (int k = 0; k < atList.length(); k++){
-							JSONObject at = atList.getJSONObject(k);
-							row.createCell(i).setCellValue(at.getString("atType") + "/" + at.getString("unit"));
-							i++;
-						}
+						JSONObject at = pidList.getJSONObject(j).getJSONObject("at");
+						row.createCell(i).setCellValue(at.getString("atType") + "/" + at.getString("unit"));
+						i++;
+//						JSONArray atList = pidList.getJSONObject(j).getJSONArray("at");
+//						System.out.println(atList);
+//						for (int k = 0; k < atList.length(); k++){
+//							JSONObject at = atList.getJSONObject(k);
+//							row.createCell(i).setCellValue(at.getString("atType") + "/" + at.getString("unit"));
+//							i++;
+//						}
 						
 					}
 				} catch (JSONException e) {
@@ -87,15 +96,19 @@ public class RecordSampleTypeExcel extends GerneralExcel{
 			for (int i = 1; i <= sheet.getLastRowNum(); i++){
 				Row row = sheet.getRow(i);
 				JSONObject record = template;
+//				System.out.println(record);
 //				JSONArray atList = record.getJSONArray("pid").getJSONObject(0).getJSONArray("at");
-				record.getJSONArray("pid").getJSONObject(0).remove("at");
-				JSONArray atList = new JSONArray();
+//				record.getJSONArray("pidList").getJSONObject(0).remove("at");
+				int atIndex = 0;
+				JSONArray pidList = new JSONArray();
 				for (int j = 0; j  < row.getLastCellNum(); j++){
 					row.getCell(j).setCellType(Cell.CELL_TYPE_STRING);
 					String title = rowTitle.getCell(j).getStringCellValue();
-					if (!title.contains("/")){
+					if (record.has(title)){
 						record.put(rowTitle.getCell(j).getStringCellValue(), row.getCell(j).getStringCellValue());
 					} else {
+						String pid = record.getJSONArray("pidList").getJSONObject(0).getString("pid");
+						record.getJSONArray("pidList").remove(0);
 						String name = title.substring(0,title.indexOf("/"));
 						JSONObject parameter = new JSONObject();
 						JSONObject attribute = AttributeType.getInstance().getAttribute(name);
@@ -103,12 +116,15 @@ public class RecordSampleTypeExcel extends GerneralExcel{
 						parameter.put("type", attribute.get("type"));
 						parameter.put("atType", name);
 						parameter.put("value", row.getCell(j).getStringCellValue());
-						atList.put(parameter);
+						JSONObject at = new JSONObject();
+						at.accumulate("at", parameter);
+						at.accumulate("pid", pid);
+						record.getJSONArray("pidList").put(at);
 					}
 
 				}
-				record.getJSONArray("pid").getJSONObject(0).put("at", atList);
-				System.out.println(record);
+//				record.getJSONArray("pid").getJSONObject(0).put("at", atList);
+//				System.out.println(record);
 				recordSampleType.insert(record, true);  
 			}
 		} catch (FileNotFoundException e) {

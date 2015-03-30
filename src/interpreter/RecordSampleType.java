@@ -20,26 +20,34 @@ public class RecordSampleType extends HasAtTag {
 			for (int j = 0; j < pidList.length(); j++){ // to each pid
 				JSONObject parameterList = new JSONObject();
 				int pid = Integer.valueOf(pidList.getInt(j));
-				parameterList.put("pid", pid);
+				parameterList.put("pid",String.valueOf(pid));
 				
-				JSONArray atNameList = ParameterType.getInstance().getParametersName(pid);
-				JSONArray atList = new JSONArray();
-				for (int k = 0; k < atNameList.length(); k++){
-					JSONObject parameter = new JSONObject();
-					String name = atNameList.getString(k);
-					
-					JSONObject attribute = AttributeType.getInstance().getAttribute(name);
-					parameter.put("unit", attribute.get("unit"));
-					parameter.put("type", attribute.get("type"));
-					parameter.put("atType", name);
-					parameter.put("value", "");
-					atList.put(parameter);
-				}
-				parameterList.put("at", atList);
+				String name = ParameterType.getInstance().getParametersName(pid);
+				JSONObject attribute = AttributeType.getInstance().getAttribute(name);
+				JSONObject parameter = new JSONObject();
+				parameter.put("unit", attribute.get("unit"));
+				parameter.put("type", attribute.get("type"));
+				parameter.put("atType", name);
+				parameter.put("value", "");
+				
+//				String atNameList = ParameterType.getInstance().getParametersName(pid);
+//				JSONArray atList = new JSONArray();
+//				for (int k = 0; k < atNameList.length(); k++){
+//					JSONObject parameter = new JSONObject();
+//					String name = atNameList.getString(k);
+//					
+//					JSONObject attribute = AttributeType.getInstance().getAttribute(name);
+//					parameter.put("unit", attribute.get("unit"));
+//					parameter.put("type", attribute.get("type"));
+//					parameter.put("atType", name);
+//					parameter.put("value", "");
+//					atList.put(parameter);
+//				}
+				parameterList.put("at", parameter);
 				pidValueList.put(parameterList);
 				
 			}
-			recordRequest.put("pid", pidValueList);
+			recordRequest.put("pidList", pidValueList);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,10 +84,10 @@ public class RecordSampleType extends HasAtTag {
 			aObject.put("oid", oid);
 			
 			super.insert(aObject);
-			System.out.println(aObject);
+//			System.out.println(aObject);
 			
 			if(refresh){
-				pidValueList = (JSONArray) aObject.get("pid");
+				pidValueList = (JSONArray) aObject.get("pidList");
 				Updatable recordType = (Updatable) new RecordType();
 				recordType.update(oid,pidValueList);
 			}

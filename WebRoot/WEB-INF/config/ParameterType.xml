@@ -14,5 +14,17 @@
 		<pid>3</pid>
 		<at>长</at>
 	</pt>
+	<pt>
+		<pid>4</pid>
+		<at>宽</at>
+	</pt>
+	<pt>
+		<pid>5</pid>
+		<at>厚</at>
+	</pt>
+	<pt>
+		<pid>6</pid>
+		<at>质量</at>
+	</pt>
 	<!-- configurable end -->
 </ParameterType>

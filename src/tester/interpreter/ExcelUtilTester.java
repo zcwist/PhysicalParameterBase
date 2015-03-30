@@ -14,31 +14,31 @@ public class ExcelUtilTester {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		ObjectTypeExcelTester();
+		ObjectTypeExcelTester();
 //		SampleTypeExcelTester();
-		RecordSampleTypeExcelTester();
+//		RecordSampleTypeExcelTester();
 
 	}
 	
 	public static void ObjectTypeExcelTester(){
-		ObjectType objectType = new ObjectType();
-		ObjectTypeExcel ote = new ObjectTypeExcel(objectType.getFields(1));//初始化时要明确模板
-		ote.setPath("/tmp/");
+		ObjectTypeExcel ote = new ObjectTypeExcel(0,new ObjectType());//初始化时要明确模板
+		ote.setPath("/home/kiwi/Documents/research/GRBBanking/");
 //		ote.generateXLS();
 		ote.readXLS();
 	}
 	
 	public static void SampleTypeExcelTester(){
-		SampleType sampleType = new SampleType();
-		SampleTypeExcel ste = new SampleTypeExcel(sampleType.getFields());
-		ste.setPath("/tmp/");
+//		SampleType sampleType = new SampleType();
+//		SampleTypeExcel ste = new SampleTypeExcel(sampleType.getFields());
+		SampleTypeExcel ste = new SampleTypeExcel(0, new SampleType());
+		ste.setPath("/home/kiwi/Documents/research/GRBBanking/");
 //		ste.generateXLS();
 		ste.readXLS();
 	}
 	public static void RecordSampleTypeExcelTester(){
 		RecordSampleType recordSampleType = new RecordSampleType();
 		RecordSampleTypeExcel rste = new RecordSampleTypeExcel(recordSampleType.getFields(1));
-		rste.setPath("/tmp/");
+		rste.setPath("/home/kiwi/Documents/research/GRBBanking/");
 //		rste.generateXLS();
 		rste.readXLS();
 	}

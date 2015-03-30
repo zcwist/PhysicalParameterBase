@@ -42,5 +42,15 @@
 		<type>float</type>
 		<unit>mm</unit>
 	</at>
+	<at>
+		<name>厚</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>质量</name>
+		<type>float</type>
+		<unit>g</unit>
+	</at>
 	
 </AttributeType>

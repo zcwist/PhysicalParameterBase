@@ -26,30 +26,31 @@ public class RecordType extends HasPublicType implements Updatable{
 	 */
 	public void update(String oid, JSONArray pidList){
 //		System.out.println("PidList:" + pidList);
+//		e.g pidList = [{"at":{"atType":"杨氏模量","unit":"GPa","value":"0.65","type":"float"},"pid":"1"}]
+		
+
 		for (int i = 0; i < pidList.length(); i++){
 			try {
 				String pid = ((JSONObject)pidList.get(i)).get("pid").toString();
-				JSONArray template = pidList.getJSONObject(i).getJSONArray("at");
-				System.out.println("template:" + template);
+				JSONObject template = pidList.getJSONObject(i).getJSONObject("at");
+//				System.out.println("template:" + template);
 				JSONObject result = new JSONObject();
 				result.put("pid", pid);
 				result.put("oid", oid);
 				JSONObject cal = calculate(oid, pid);
-				JSONArray resultValueList = new JSONArray();
-				for (int j = 0; j < template.length(); j++){
-					JSONObject atTemplate = template.getJSONObject(j);
-					String atType = atTemplate.get("atType").toString();
-					atTemplate.put("value", cal.get(atType));
-					resultValueList.put(atTemplate);
-				}
-				result.put("value", resultValueList);
+//				JSONArray resultValueList = new JSONArray();
+				String atType = template.get("atType").toString();
+				template.put("value", cal.get(atType));
+//				resultValueList.put(template);
+				
+				result.put("value", template);
 				JSONObject query = new JSONObject();
 				query.put("oid", oid);
 				query.put("pid", pid);
 				MongoWrapper.getInstance().update(query, result, "RecordType");
 				
 				
-				System.out.println(result);
+//				System.out.println(result);
 				
 				
 
@@ -73,11 +74,9 @@ public class RecordType extends HasPublicType implements Updatable{
 	 */
 	
 	private JSONObject getSource(String oid, String pid) throws JSONException{
-		JSONArray parameterList = ParameterType.getInstance().getParametersName(Integer.valueOf(pid));
+		String parameterName = ParameterType.getInstance().getParametersName(Integer.valueOf(pid));
 		JSONObject result = new JSONObject();
-		for (int i = 0; i < parameterList.length(); i++){
-			result.put(parameterList.get(i).toString(), new JSONArray());
-		}
+		result.put(parameterName, new JSONArray());
 //		System.out.println(result);
 		
 		
@@ -85,25 +84,23 @@ public class RecordType extends HasPublicType implements Updatable{
 		BasicDBObject query = new BasicDBObject();
 		query.put("oid", oid);
 		BasicDBObject keys = new BasicDBObject();
-		keys.put("pid", "1");
+		keys.put("pidList", "1");
 		keys.put("_id", 0);
+//		System.out.println("Query:" + query.toString());
+//		System.out.println("Fields" + keys.toString());
 		DBCursor queryResult = MongoWrapper.getInstance().getValueFromColl(query, keys, "RecordSampleType");
 		while (queryResult.hasNext()){
-
-			JSONArray parameterValueList = (JSONArray)(new JSONObject(queryResult.next().toString())).get("pid");
+//			System.out.println(queryResult.next().toString());
+//			e.g { "pidList" : [ { "at" : { "atType" : "杨氏模量" , "unit" : "GPa" , "value" : "0.65" , "type" : "float"} , "pid" : "1"}]}
+			JSONArray parameterValueList = (JSONArray)(new JSONObject(queryResult.next().toString())).get("pidList");
 			
 //			System.out.println(parameterValueList);
 			for (int i = 0; i < parameterValueList.length(); i++){
 				JSONObject parameterValue = (JSONObject)parameterValueList.get(i);
 				if (parameterValue.get("pid").toString().equals(pid)){
-					JSONArray atList = (JSONArray)parameterValue.get("at");
-					for (int j = 0; j < atList.length(); j++){
-						JSONObject at = (JSONObject)atList.get(j);
-						result.accumulate(at.get("atType").toString(), at.get("value").toString());
-						
-					}
-					
-					
+					JSONObject at = parameterValue.getJSONObject("at");
+					result.accumulate(at.get("atType").toString(), at.get("value").toString());
+	
 				}
 			}
 		}
