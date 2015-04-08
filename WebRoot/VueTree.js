@@ -1,6 +1,33 @@
 $(document).ready(function(){
+  var roleMap = {
+    "Administrator":"管理员",
+    "Engineer":"工程师"
+  };
+  
+  function Request(strName) 
+  { 
+    var strHref = window.document.location.href; 
+    var intPos = strHref.indexOf("?"); 
+    var strRight = strHref.substr(intPos + 1); 
+
+    var arrTmp = strRight.split("&"); 
+    for(var i = 0; i < arrTmp.length; i++) 
+    { 
+    var arrTemp = arrTmp[i].split("="); 
+
+    if(arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[1]; 
+    } 
+    return ""; 
+  }
+  var userName = Request("user");
+  var role = Request("Role");
+  $('#user').html(userName);
+  $('#role').html(roleMap[role]);
+
+
+
     var data = {
-      	name: 'root',
+      	name: '被测对象',
       	objectId: null,
       	oid: null,
       	children: []
@@ -32,7 +59,7 @@ $(document).ready(function(){
 	        		if (!this.childrenIsLoaded){
 	        			//the children of the node hasn't been loaded
 	        			this.changeType();
-	        			var nodeName = (this.model.name == 'root')? "":this.model.name;
+	        			var nodeName = (this.model.name == '被测对象')? "":this.model.name;
 	        			var objectId = this.model.objectId;
 	        			this.loadTreeData(nodeName,objectId,this);
 	        		}

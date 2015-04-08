@@ -1,6 +1,6 @@
 .top-header {
 	color: #fff;
-	padding-bottom: 100px;
+	/*padding-bottom: 100px;*/
 }
 a.header{
 	color:#fff;
@@ -12,9 +12,11 @@ a.header{
 body {
   font-family: Menlo, Consolas, monospace;
   color: #444;
+  font-size: 20px;
 }
 .item {
   cursor: pointer;
+  font-size: large;
 }
 .bold {
   font-weight: bold;
@@ -23,4 +25,15 @@ ul {
   padding-left: 1em;
   line-height: 1.5em;
   list-style-type: dot;
+}
+.center {
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+select,option 
+{
+  font-size:14px; font-family:微软雅黑;
 }

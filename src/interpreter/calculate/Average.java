@@ -1,5 +1,6 @@
 package interpreter.calculate;
 
+import java.text.DecimalFormat;
 import java.util.Iterator;
 
 import org.json.JSONArray;
@@ -22,7 +23,8 @@ public class Average implements CalculateStrategyInterface {
 				for (int i = 0; i < valueList.length(); i++){
 					sum += Double.valueOf(valueList.get(i).toString());
 				}
-				result.put(key, sum / valueList.length());
+				DecimalFormat df = new DecimalFormat("#.##");
+				result.put(key, df.format(sum / valueList.length()));
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

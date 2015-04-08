@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/PPMS.css">
+		<link rel="stylesheet" href="css/jquery.treegrid.css">
+		<style type="text/css">
+			.title{
+				margin-top: 220px;
+				margin-bottom: 50px;
+			}
+			.white-font{
+				color: #FFF;
+			}
+		</style>
+		<script type="text/javascript">
+			function gotoScan()
+			{
+				console.log("goto");
+				var userName = document.getElementById("User").value;
+				var password = document.getElementById("Password").value;
+				var role = document.getElementById("Role").value;
+				console.log(userName + password + role);
+				window.location.href = "Scan.html?User=" + userName + "&Role=" + role;
+			}
+		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<title>柔性介质适应性物性参数管理系统</title>
+	</head>
+	<body style="background-image: url(pic/login_background.jpg); background-size:cover; background-repeat:no-repeat;">
+
+		<div class="container white-font">
+			<div class="row title">
+				<div class="col-md-6 col-md-offset-3">
+						<h2 align="center">柔性介质适应性物性参数管理系统</h2>
+				</div>
+			
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<form class="form-horizontal">
+					  	<div class="form-group">
+					    	<label for="User" class="col-md-3 control-label">用户名</label>
+					    	<div class="col-md-9">
+					    		<input type="text" class="form-control" id="User" placeholder="Demo">
+					    	</div>
+					    	
+					  	</div>
+					  	<div class="form-group">
+					    	<label for="Password" class="col-md-3 control-label">密码</label>
+					    	<div class="col-md-9">
+					    		<input type="password" class="form-control" id="Password" placeholder="Password">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label for="Role" class="col-md-3 control-label">角色</label>
+					    	<div class="col-md-9">
+						    	<select class="form-control" id="Role">
+								  	<option value="Administrator">管理员</option>
+								  	<option value="Engineer">工程师</option>
+								</select>
+							</div>
+					 	</div>
+					 	<div class="col-md-12">
+					  		<button type="button" class="btn btn-default btn-lg btn-block" onclick="gotoScan()">登录</button>
+					  	</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

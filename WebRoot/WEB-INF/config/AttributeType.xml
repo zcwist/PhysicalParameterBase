@@ -6,19 +6,63 @@
 		<type>float</type>
 		<unit>GPa</unit>
 	</at>
+	<!-- Young's module experimental attribute-->
+	<at>
+		<name>原长</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>伸长量</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>速度</name>
+		<type>float</type>
+		<unit>mm/min</unit>
+	</at>
+	<at>
+		<name>时间</name>
+		<type>float</type>
+		<unit>s</unit>
+	</at>
+	<at>
+		<name>峰值</name>
+		<type>float</type>
+		<unit>N</unit>
+	</at>
+	<at>
+		<name>试样宽</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<!-- Young's module experimental attribute end-->
+
+
 	<at>
 		<name>环压强度</name>
 		<type>float</type>
 		<unit>N</unit>
 	</at>
+
 	<at>
-		<name>介质类型</name>
-		<type>String</type>
+		<name>平滑度</name>
+		<type>float</type>
+		<unit>s</unit>
 	</at>
 	<at>
 		<name>介质类型</name>
 		<type>String</type>
 	</at>
+	<at>
+		<name>尺寸</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>贯字号</name>
+		<type>String</type>
+	</at>	
 	<at>
 		<name>贯字号</name>
 		<type>String</type>

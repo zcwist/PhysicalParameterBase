@@ -24,7 +24,7 @@
 		    	</li>
 		  	</ul>
 		</script>
-		<title>Management System</title>
+		<title>柔性介质适应性物性参数管理系统</title>
 	</head>
 	<body>
 
@@ -32,9 +32,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-							<h2>物性参数知识管理系统</h2>
+							<h2>柔性介质适应性物性参数管理系统</h2>
 					</div>
-					<div class="col-md-3" style="margin-top: 15px;">
+					<!-- <div class="col-md-3" style="margin-top: 30px;">
 						<div class="input-group nav navbar-nav">
 							<input type="text" class="form-control">
 							<span class="input-group-addon">
@@ -61,6 +61,21 @@
 									<span class="glyphicon glyphicon-log-in"></span>
 								</a>
 							</li>		
+					</div> -->
+				</div>
+				<div>
+					
+				</div style="margin-top: 20px";>
+					<div class="col-md-1 col-md-offset-9" id="user">
+						 User
+					</div>
+					<div class="col-md-1" id="role">
+						Role
+					</div>
+					<div class="col-md-1">
+						<a class="header" href="index.html">
+									<span class="glyphicon glyphicon-log-in"></span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -79,16 +94,20 @@
 					</div>
 				</div>
 				<div class="col-md-9">
-					<table class="table" id="parameterTable">
-					   	<caption>
-					   		<h3>
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3>
 					   			<div id="table-title">物性参数表</div>
 					   			
 					   		</h3>
+						</div>
+						<table class="table table-striped" id="parameterTable">
+					   	<caption>
+					   		
 					   	</caption>
 					   	<thead>
 					      <tr>
-					         <th>物性参数</th>
+					         <th width="200px">物性参数</th>
 					         <th>值</th>
 					         <th>单位</th>
 					         <th>数据源</th>
@@ -100,6 +119,8 @@
 					   	</tbody>
 
 					</table>
+					</div>
+					
 				</div>
 			</div>
 		</div>

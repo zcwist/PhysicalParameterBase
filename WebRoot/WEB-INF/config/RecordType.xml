@@ -12,10 +12,23 @@
 	
 	</rt>
 	<rt>
+		<rule pid="2">Average</rule>
+	</rt>
+	<rt>
 		<rule pid="3">Average</rule>
 	</rt>
-		<rt>
+	<rt>
 		<rule pid="4">Average</rule>
 	</rt>
+	<rt>
+		<rule pid="5">Average</rule>
+	</rt>
+	<rt>
+		<rule pid="6">Average</rule>
+	</rt>
+	<rt>
+		<rule pid="7">Average</rule>
+	</rt>
+
 	<!-- configurable end -->
 </RecordType>

@@ -7,13 +7,36 @@
 	</public>
 	<!-- configurable -->
 	<rst>
-		<pid>1</pid>
+		<pid>3</pid> <!-- length -->
+		<pid>4</pid> <!-- width -->
 		<at>测试条件描述</at>
-		<at>测试照片</at>
 	</rst>
 	<rst>
-		<pid>3</pid>
-		<pid>4</pid>
+		<pid>5</pid> <!-- thickness -->
+		<at>测试条件描述</at>
 	</rst>
+	<rst>
+		<pid>6</pid> <!-- mass -->
+		<at>测试条件描述</at>
+	</rst>
+	<rst>
+		<pid>1</pid> <!-- young's module -->
+		<at>测试条件描述</at>
+		<at>原长</at>
+		<at>伸长量</at>
+		<at>速度</at>
+		<at>时间</at>
+		<at>峰值</at>
+		<at>试样宽</at>
+	</rst>
+	<rst>
+		<pid>2</pid> <!--Ring Crush Test-->
+		<at>测试条件描述</at>
+	</rst>
+	<rst>
+		<pid>7</pid> <!--smoothness of paper-->
+		<at>测试条件描述</at>
+	</rst>
+
 	<!-- configurable end -->
 </RecordSampleType>

@@ -26,5 +26,9 @@
 		<pid>6</pid>
 		<at>质量</at>
 	</pt>
+	<pt>
+		<pid>7</pid>
+		<at>平滑度</at>
+	</pt>
 	<!-- configurable end -->
 </ParameterType>

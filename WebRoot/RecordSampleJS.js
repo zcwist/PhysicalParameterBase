@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	roleMap = {"Administrator":"管理员","Engineer":"工程师");
 	function Request(strName) 
 	{ 
 		var strHref = window.document.location.href; 

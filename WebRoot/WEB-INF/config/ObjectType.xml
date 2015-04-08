@@ -13,8 +13,14 @@
 	</ot>
 	<ot>
 		<alias>什么介质？多大面额？</alias>
-		<at>面额</at>
 		<at>介质类型</at>
+		<at>面额</at>
+	</ot>
+	<ot>
+		<alias>什么介质？多大？</alias>
+		<at>介质类型</at>
+		<at>尺寸</at>
+		<at>新旧程度</at>
 	</ot>
 	<!-- configurable end -->
 </ObjectType>
