@@ -37,6 +37,18 @@
 		<pid>7</pid> <!--smoothness of paper-->
 		<at>测试条件描述</at>
 	</rst>
+	<rst>
+		<pid>1</pid>
+		<at>测量方法</at>
+		<at>测量仪器</at>
+		<at>实验者</at>
+	</rst>
+	<rst>
+		<pid>1</pid>
+		<at>测量方法</at>
+		<at>测量仪器</at>
+		<at>实验者</at>
+	</rst>
 
 	<!-- configurable end -->
 </RecordSampleType>

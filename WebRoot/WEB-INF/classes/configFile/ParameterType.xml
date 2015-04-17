@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--物性参数-->
+<ParameterType>
+	<!-- configurable -->
+	<pt>
+		<pid>1</pid>
+		<at>杨氏模量</at>
+	</pt>
+	<pt>
+		<pid>2</pid>
+		<at>环压强度</at>
+	</pt>
+	<pt>
+		<pid>3</pid>
+		<at>长</at>
+	</pt>
+	<pt>
+		<pid>4</pid>
+		<at>宽</at>
+	</pt>
+	<pt>
+		<pid>5</pid>
+		<at>厚</at>
+	</pt>
+	<pt>
+		<pid>6</pid>
+		<at>质量</at>
+	</pt>
+	<pt>
+		<pid>7</pid>
+		<at>平滑度</at>
+	</pt>
+	<!-- configurable end -->
+</ParameterType>

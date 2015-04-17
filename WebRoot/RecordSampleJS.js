@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	roleMap = {"Administrator":"管理员","Engineer":"工程师");
+	
 	function Request(strName) 
 	{ 
 		var strHref = window.document.location.href; 
@@ -20,7 +20,7 @@ $(document).ready(function() {
 	$.post('servlet/QueryServlet', {"askFor":"sampleTable","objectId":oid,"parameterId":pid}, function(result) {
 		/*optional stuff to do after success */
 		
-		var title = result.ObjectName + result.content[0].data.atType;
+		var title = result.ObjectName + "    " +result.content[0].data.atType;
 		// console.log("title:" + title);
 		genTableTitle(title);
 		genTableContent(result.content)

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 存储所有可能用到的属性 -->
+<AttributeType>
+	<at>
+		<name>杨氏模量</name>
+		<type>float</type>
+		<unit>GPa</unit>
+	</at>
+	<!-- Young's module experimental attribute-->
+	<at>
+		<name>原长</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>伸长量</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>速度</name>
+		<type>float</type>
+		<unit>mm/min</unit>
+	</at>
+	<at>
+		<name>时间</name>
+		<type>float</type>
+		<unit>s</unit>
+	</at>
+	<at>
+		<name>峰值</name>
+		<type>float</type>
+		<unit>N</unit>
+	</at>
+	<at>
+		<name>试样宽</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<!-- Young's module experimental attribute end-->
+
+
+	<at>
+		<name>环压强度</name>
+		<type>float</type>
+		<unit>N</unit>
+	</at>
+
+	<at>
+		<name>平滑度</name>
+		<type>float</type>
+		<unit>s</unit>
+	</at>
+	<at>
+		<name>介质类型</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>尺寸</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>贯字号</name>
+		<type>String</type>
+	</at>	
+	<at>
+		<name>贯字号</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>测试条件描述</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>测量方法</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>测量仪器</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>实验者</name>
+		<type>String</type>
+	</at>
+
+	<at>
+		<name>测试样本图片</name>
+		<type>Picture</type>
+		<!-- when the attribute is a picture, the value will be the URL of the picture -->
+	</at>
+	<at>
+		<name>宽</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>长</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>厚</name>
+		<type>float</type>
+		<unit>mm</unit>
+	</at>
+	<at>
+		<name>质量</name>
+		<type>float</type>
+		<unit>g</unit>
+	</at>
+	
+</AttributeType>

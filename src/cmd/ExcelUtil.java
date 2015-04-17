@@ -1,4 +1,4 @@
-package tester.interpreter;
+package cmd;
 
 import interpreter.ObjectType;
 import interpreter.RecordSampleType;
@@ -11,31 +11,30 @@ import excelutil.ObjectTypeExcel;
 import excelutil.RecordSampleTypeExcel;
 import excelutil.SampleTypeExcel;
 
-public class ExcelUtilTester {
+public class ExcelUtil {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		
-//		ObjectTypeExcelTester();
-//		SampleTypeExcelTester();
-		//"ObjectTypeExcelTester","SampleTypeExcelTester","RecordSampleTypeExcelTester"
-		tester.test(2,false,0);
-
-
+		int index = Integer.valueOf(args[0]);
+		boolean generate = Boolean.valueOf(args[1]);
+		int modelIndex = Integer.valueOf(args[2]);
+		tester.test(index, generate, modelIndex);
+		System.out.println(index);
+		System.out.println(generate);
+		System.out.println(modelIndex);
 	}
+
+	private static ExcelUtil tester = new ExcelUtil();
 	
-	private static ExcelUtilTester tester = new ExcelUtilTester();
-	
-	private String[] functionList  = {"ObjectTypeExcelTester","SampleTypeExcelTester","RecordSampleTypeExcelTester" };
+	private String[] functionList  = {"ObjectType","SampleType","RecordSample" };
 	
 	private void test(int index, boolean generate, int modelIndex){
 		String function = functionList[index];
 		try {
-			Method method = ExcelUtilTester.class.getDeclaredMethod(function , boolean.class, int.class);
+			Method method = ExcelUtil.class.getDeclaredMethod(function , boolean.class, int.class);
 			method.invoke(tester, generate, modelIndex);
 			
 		} catch (SecurityException e) {
@@ -59,7 +58,7 @@ public class ExcelUtilTester {
 		
 	}
 	
-	public static void ObjectTypeExcelTester(boolean generate, int modelIndex){
+	public static void ObjectType(boolean generate, int modelIndex){
 		
 		ObjectTypeExcel ote = new ObjectTypeExcel(modelIndex,new ObjectType());//初始化时要明确模板
 		ote.setPath("/home/kiwi/Documents/research/GRGBanking/");
@@ -67,15 +66,13 @@ public class ExcelUtilTester {
 		else ote.readXLS();
 	}
 	
-	public static void SampleTypeExcelTester(boolean generate, int modelIndex){
-//		SampleType sampleType = new SampleType();
-//		SampleTypeExcel ste = new SampleTypeExcel(sampleType.getFields());
+	public static void SampleType(boolean generate, int modelIndex){
 		SampleTypeExcel ste = new SampleTypeExcel(modelIndex, new SampleType());
 		ste.setPath("/home/kiwi/Documents/research/GRGBanking/");
 		if (generate) ste.generateXLS();
 		else ste.readXLS();
 	}
-	public static void RecordSampleTypeExcelTester(boolean generate, int modelIndex){
+	public static void RecordSample(boolean generate, int modelIndex){
 		RecordSampleType recordSampleType = new RecordSampleType();
 		RecordSampleTypeExcel rste = new RecordSampleTypeExcel(recordSampleType.getFields(modelIndex));
 		rste.setPath("/home/kiwi/Documents/research/GRGBanking/");

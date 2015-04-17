@@ -37,7 +37,7 @@ public class XMLUtil {
 
 	}
 	private String getPath(){
-		String path = "WebRoot/WEB-INF/config/";
+		String path = "/home/kiwi/Workspaces/MyEclipse 10/PhysicalParameterBase/src/configFile/";
 		return path;
 	}
 	public JSONObject getContentInJson(){

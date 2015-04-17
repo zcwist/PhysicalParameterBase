@@ -84,7 +84,7 @@ public class RecordSampleType extends HasAtTag {
 			aObject.put("oid", oid);
 			
 			super.insert(aObject);
-//			System.out.println(aObject);
+			System.out.println(aObject);
 			
 			if(refresh){
 				pidValueList = (JSONArray) aObject.get("pidList");

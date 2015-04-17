@@ -72,6 +72,19 @@
 		<type>String</type>
 	</at>
 	<at>
+		<name>测量方法</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>测量仪器</name>
+		<type>String</type>
+	</at>
+	<at>
+		<name>实验者</name>
+		<type>String</type>
+	</at>
+
+	<at>
 		<name>测试样本图片</name>
 		<type>Picture</type>
 		<!-- when the attribute is a picture, the value will be the URL of the picture -->
