@@ -21,6 +21,16 @@
 	</rst>
 	<rst>
 		<pid>1</pid> <!-- young's module -->
+		<at>TestDescription</at>
+		<at>OriginalLength</at>
+		<at>Elongation</at>
+		<at>Velocity</at>
+		<at>DurationTime</at>
+		<at>PeakValue</at>
+		<at>Width</at>
+	</rst>
+	<rst>
+		<pid>1</pid> <!-- young's module -->
 		<at>测试条件描述</at>
 		<at>原长</at>
 		<at>伸长量</at>

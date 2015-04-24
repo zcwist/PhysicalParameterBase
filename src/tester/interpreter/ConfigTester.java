@@ -22,11 +22,11 @@ public class ConfigTester {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		attributeTypeTester();
-		objectTypeTester();
+//		objectTypeTester();
 //		mongoAndObjectTypeTester();
 //		parameterTypeTester();
 //		recordTypeTester();
-//		recordSampleTypeTester(true);
+		recordSampleTypeTester(true);
 //		sampleTypeTester();
 //		recordType();
 //		trial2();
@@ -106,7 +106,7 @@ public class ConfigTester {
 	public static void sampleTypeTester(){
 //		SampleType sampleType = new SampleType();
 //		System.out.println(sampleType.getFields().toString().replace("\"", "'"));
-		System.out.println(SampleType.getSampleTypeName("1"));
+//		System.out.println(SampleType.getSampleTypeName("1"));
 		
 //		JSONObject aObject;
 //		try {
@@ -130,17 +130,17 @@ public class ConfigTester {
 	}
 	public static void recordSampleTypeTester(boolean toInsert){
 		RecordSampleType record = new RecordSampleType();
-//		System.out.println(record.getFields(0).toString().replace("\"", "'"));
-//		System.out.println(record.getFields(0).toString());
-		if (toInsert){
-			JSONObject aObject;
-			try{
-				aObject = new JSONObject("{'sid':'1','pidList':[{'at':{'atType':'杨氏模量','unit':'GPa','value':'0.66','type':'float'},'pid':'1'}],'测试条件描述':'helloword','rsid':'1','测试照片':'no'}");
-				record.insert(aObject, true);
-			}catch (JSONException e){
-				e.printStackTrace();
-			}
-		}
+//		System.out.println(record.getFields(3).toString().replace("\"", "'"));
+		System.out.println(record.getFields(3).toString());
+//		if (toInsert){
+//			JSONObject aObject;
+//			try{
+//				aObject = new JSONObject("{'sid':'1','pidList':[{'at':{'atType':'杨氏模量','unit':'GPa','value':'0.66','type':'float'},'pid':'1'}],'测试条件描述':'helloword','rsid':'1','测试照片':'no'}");
+//				record.insert(aObject, true);
+//			}catch (JSONException e){
+//				e.printStackTrace();
+//			}
+//		}
 	}
 	
 	public static void recordType(){
